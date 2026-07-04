@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { authenticate } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-export async function post(request: NextRequest) {
+export async function POST(request: NextRequest) {
   const user = await authenticate(request)
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -14,6 +14,6 @@ export async function post(request: NextRequest) {
   const body = await request.json()
   // Record word review result, update spaced repetition interval and next review date
 
-  const item = await prisma.Word.create({ data: body })
+  const item = await prisma.word.create({ data: body })
   return NextResponse.json(item, { status: 201 })
 }

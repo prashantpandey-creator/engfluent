@@ -24,6 +24,17 @@ const RU = {
   dashboard_streak: 'Дней подряд',
   dashboard_start: 'Начать урок',
   dashboard_no_words: 'Пока нет слов для повторения. Начни урок!',
+  
+  // Dashboard Extras
+  ai_tutor_badge: 'ИИ Репетитор',
+  ai_tutor_title: 'Практика разговора с ИИ 🤖',
+  ai_tutor_desc: 'Свободное общение и советы',
+  ai_tutor_start: 'Начать чат',
+  coffee_lesson_title: 'Как заказать кофе ☕',
+  coffee_lesson_desc: 'Практика разговора • 5 мин • Простой',
+  quicklink_lessons: 'По категориям',
+  quicklink_progress: 'Твоя статистика',
+  quicklink_achievements: 'Твои победы',
 
   // ── Lessons ──
   lessons_title: 'Твои Уроки',
@@ -126,6 +137,16 @@ const EN: Record<keyof typeof RU, string> = {
   dashboard_start: 'Start Lesson',
   dashboard_no_words: 'No words to review yet. Start a lesson!',
 
+  ai_tutor_badge: 'AI Tutor',
+  ai_tutor_title: 'Practice conversation with AI 🤖',
+  ai_tutor_desc: 'Free-form chat & real-time feedback',
+  ai_tutor_start: 'Start Chat',
+  coffee_lesson_title: 'How to Order Coffee ☕',
+  coffee_lesson_desc: 'Speaking practice • 5 min • Easy',
+  quicklink_lessons: 'By category',
+  quicklink_progress: 'Your stats',
+  quicklink_achievements: 'Your wins',
+
   lessons_title: 'Your Lessons',
   lessons_subtitle: 'Pick a topic and learn at your own pace',
   lessons_category_all: 'All',
@@ -208,12 +229,12 @@ export function t(key: keyof typeof RU, lang: Lang): string {
 
 export function getLangFromStorage(): Lang {
   if (typeof window === 'undefined') return 'ru';
-  return (localStorage.getItem('engfluent_lang') as Lang) || 'ru';
+  return (localStorage.getItem('mila_lang') as Lang) || 'ru';
 }
 
 export function setLangStorage(lang: Lang) {
   if (typeof window !== 'undefined') {
-    localStorage.setItem('engfluent_lang', lang);
+    localStorage.setItem('mila_lang', lang);
   }
 }
 

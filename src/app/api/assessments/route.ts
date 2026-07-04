@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { authenticate } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-export async function get(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const user = await authenticate(request)
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -13,6 +13,6 @@ export async function get(request: NextRequest) {
 
   // Get assessment history with scores and recommendations
 
-  const items = await prisma.Assessment.findMany()
+  const items = await prisma.assessment.findMany()
   return NextResponse.json(items)
 }

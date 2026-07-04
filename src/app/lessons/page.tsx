@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation'
 import LessonList from '@/components/LessonList'
 import CategoryFilter from '@/components/CategoryFilter'
 import SkillProgressBar from '@/components/SkillProgressBar'
+import GenerateLessonButton from '@/components/GenerateLessonButton'
 
 export default async function LessonsPage() {
   const token = (await cookies()).get('token')?.value
@@ -20,6 +21,7 @@ export default async function LessonsPage() {
     <main className="container mx-auto p-4">
       <h1 className="text-2xl font-bold">My Lessons</h1>
       <p className="text-gray-600 mt-2">Lesson browser filtered by category</p>
+      <GenerateLessonButton />
       <LessonList lessons={lessons} />
       <CategoryFilter />
       <SkillProgressBar />

@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { authenticate } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-export async function get(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const user = await authenticate(request)
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -13,6 +13,6 @@ export async function get(request: NextRequest) {
 
   // List lessons filtered by learner category, level, and skill focus area. Sort by recommended order.
 
-  const items = await prisma.Lesson.findMany()
+  const items = await prisma.lesson.findMany()
   return NextResponse.json(items)
 }

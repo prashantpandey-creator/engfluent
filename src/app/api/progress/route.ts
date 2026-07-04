@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { authenticate } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-export async function get(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const user = await authenticate(request)
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -13,6 +13,6 @@ export async function get(request: NextRequest) {
 
   // Get user progress summary: completed lessons, scores, time spent, weak areas
 
-  const items = await prisma.Progress.findMany()
+  const items = await prisma.progress.findMany()
   return NextResponse.json(items)
 }

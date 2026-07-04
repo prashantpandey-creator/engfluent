@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { authenticate } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-export async function put(request: NextRequest) {
+export async function PUT(request: NextRequest) {
   const user = await authenticate(request)
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -15,6 +15,6 @@ export async function put(request: NextRequest) {
   // End current session, update stats and streak
 
   const id = request.nextUrl.pathname.split('/').pop()
-  const item = await prisma.StudySession.update({ where: { id }, data: body })
+  const item = await prisma.studySession.update({ where: { id }, data: body })
   return NextResponse.json(item)
 }

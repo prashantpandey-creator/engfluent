@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { authenticate } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-export async function get(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const user = await authenticate(request)
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -14,7 +14,7 @@ export async function get(request: NextRequest) {
   // Get lesson detail with all exercises
 
   const id = request.nextUrl.pathname.split('/').pop()
-  const item = await prisma.Lesson.findUnique({ where: { id } })
+  const item = await prisma.lesson.findUnique({ where: { id } })
   if (!item) return NextResponse.json({ error: 'Not found' }, { status: 404 })
   return NextResponse.json(item)
 }

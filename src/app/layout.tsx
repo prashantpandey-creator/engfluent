@@ -3,7 +3,7 @@ import './globals.css'
 import { I18nProvider } from '@/lib/i18n-provider'
 
 export const metadata: Metadata = {
-  title: 'EngFluent — Английский с душой',
+  title: 'Mila — Английский с душой',
   description: 'Уютная платформа для изучения английского. Сделано с любовью для русскоговорящих.',
 }
 

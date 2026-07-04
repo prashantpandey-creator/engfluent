@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { authenticate } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-export async function get(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const user = await authenticate(request)
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -13,6 +13,6 @@ export async function get(request: NextRequest) {
 
   // Get vocabulary words due for review based on spaced repetition algorithm and learner category
 
-  const items = await prisma.Word.findMany()
+  const items = await prisma.word.findMany()
   return NextResponse.json(items)
 }
